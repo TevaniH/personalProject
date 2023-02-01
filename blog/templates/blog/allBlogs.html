@@ -1,0 +1,31 @@
+
+{% extends 'portfolio/basePage.html'%}
+
+
+{% block content%}
+<h1 id="blogtitle" class="font-weight-bold text-center"> Tevani's Bloggity Blog </h1>
+
+
+<h3 class="text-center m-5"> We got bout {{blogs.count}} post{{blogs.count|pluralize}}!</h3>
+
+
+{%for i in blogs%}
+
+
+<div class="row justify-content-center my-3">
+
+  <div class="col-md-10">
+	<a href = "{% url 'blog:detail' i.id %}">
+		<h3>{{i.blogTitle}}</h3>
+	</a>
+
+	<h6 class="text-muted">{{i.datePosted|date:'M d Y'|upper}}</h6>
+
+	<h4>{{i.blogContent|truncatechars:100}}</h4>
+	
+	</div>
+</div>
+
+{%endfor%}
+
+{% endblock%}
